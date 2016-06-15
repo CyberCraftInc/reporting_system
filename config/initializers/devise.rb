@@ -1,21 +1,17 @@
+require 'devise'
 # Use this hook to configure devise mailer, warden hooks and so forth.
 # Many of these configuration options can be set straight in your model.
 Devise.setup do |config|
-
-  module Test
-    
-    autoload :IntegrationHelpers, 'test/integration_helpers_test.rb'
-  end
   # The secret key used by Devise. Devise uses this key to generate
   # random tokens. Changing this key will render invalid all existing
   # confirmation, reset password and unlock tokens in the database.
-  # config.secret_key = 'd9850f1ff8b5a77aa85684827da09aad736c7aea6db71e1b7d0714d34eba97fff3fc6461efbdad1bb80dcddf9926d7c7696bc82198e9d24399517a95cc127875'
+  # config.secret_key = '982e67a0811307b435d646a4f6229e5f3faa55daa7cde4546a9d005dd04b3591363b8fb8262f8063007d4ccb779ec1d04a81f3d825d1bd4cce8fbe2545e1e9b9'
 
   # ==> Mailer Configuration
   # Configure the e-mail address which will be shown in Devise::Mailer,
   # note that it will be overwritten if you use your own mailer class
   # with default "from" parameter.
-  config.mailer_sender = 'example@mail.com'
+  config.mailer_sender = 'please-change-me-at-config-initializers-devise@example.com'
 
   # Configure the class responsible to send e-mails.
   # config.mailer = 'Devise::Mailer'
@@ -102,7 +98,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 10
 
   # Setup a pepper to generate the encrypted password.
-  # config.pepper = '8a2de0b21081ded99aa181f73fe91d364aa7b998ffa14033d0125a3065c14811a6824edb13350a3b2ea40b25ebce9c548358105e3f8c88e624ddd8b33980e4dc'
+  # config.pepper = 'a006b957de7f35ae8b05164d9185674a4d4055782412c719aa860f42803cf1f4696ef7694dcea1f5feb49ef9f6f369a18ba2cf9b4db8a3e7984507ece9e9c967'
 
   # ==> Configuration for :confirmable
   # A period that the user is allowed to access the website even without
@@ -118,13 +114,13 @@ Devise.setup do |config|
   # their account can't be confirmed with the token any more.
   # Default is nil, meaning there is no restriction on how long a user can take
   # before confirming their account.
-  #config.confirm_within = 3.days
+  # config.confirm_within = 3.days
 
   # If true, requires any email changes to be confirmed (exactly the same way as
   # initial account confirmation) to be applied. Requires additional unconfirmed_email
   # db field (see migrations). Until confirmed, new email is stored in
   # unconfirmed_email column, and copied to email column on successful confirmation.
-  #config.reconfirmable = true
+  config.reconfirmable = true
 
   # Defines which key will be used when confirming an account
   # config.confirmation_keys = [ :email ]
@@ -145,7 +141,7 @@ Devise.setup do |config|
 
   # ==> Configuration for :validatable
   # Range for password length.
-  config.password_length = 8..13
+  config.password_length = 8..128
 
   # Email regex used to validate email formats. It simply asserts that
   # one (and only one) @ exists in the given string. This is mainly
@@ -218,7 +214,7 @@ Devise.setup do |config|
 
   # Set this configuration to false if you want /users/sign_out to sign out
   # only the current scope. By default, Devise signs out all scopes.
-   config.sign_out_all_scopes = true
+  # config.sign_out_all_scopes = true
 
   # ==> Navigation configuration
   # Lists the formats that should be treated as navigational. Formats like
@@ -232,7 +228,7 @@ Devise.setup do |config|
   # config.navigational_formats = ['*/*', :html]
 
   # The default HTTP method used to sign out a resource. Default is :delete.
-  config.sign_out_via = :get
+  config.sign_out_via = :delete
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting

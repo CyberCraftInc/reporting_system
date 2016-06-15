@@ -20,7 +20,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string   :last_sign_in_ip
 
       ## Confirmable
-      # t.string   :confirmation_token
+      #t.string   :confirmation_token
       # t.datetime :confirmed_at
       # t.datetime :confirmation_sent_at
       # t.string   :unconfirmed_email # Only if using reconfirmable
@@ -36,6 +36,7 @@ class DeviseCreateUsers < ActiveRecord::Migration
       t.string :email
       t.string :password
       t.string :password_confirmation
+      t.belongs_to :role, index: true, foreign_key: true
 
       t.timestamps
     end

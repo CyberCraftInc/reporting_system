@@ -2,19 +2,27 @@
 <html>
 <head>
   <title>Reporting System</title>
-  
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.2/jquery.min.js"></script>
   <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+  <%= javascript_include_tag "application", "data-jquery-turbolinks-track" => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-eval' => false %>
+  <%= csrf_meta_tags %>
+  
 </head>
 
 <body>
+
 	<nav class="navbar navbar-inverse">
 		<div class="container">
-			
+			<div class="navbar-header">
+				<%= link_to 'Logo', root_path, class: 'navbar-brand' %>
+			</div>
 	    	<div id="navbar">
 	      		<ul class="nav navbar-nav">
 	        		<li><%= link_to 'Home', root_path %></li>
+					<li><%= link_to 'Messages', messages_path %></li>
+					<li><%= link_to 'Users', users_path %></li>
 	      		</ul>
 	      		<ul class="nav navbar-nav pull-right">
 	        		<% if user_signed_in? %>
@@ -24,8 +32,12 @@
 	              			<span class="caret"></span>
 	            			</a>
 		            		<ul class="dropdown-menu" role="menu">
+			            	  <li>
+					            <%=current_user.role.name %>
+					              	<small class="text-muted">(current role)</small>
+					           </li>
 				              <li><%= link_to 'Profile', edit_user_registration_path %></li>
-				              <li><%= link_to 'Log out', destroy_user_session_path, method: :delete %></li>
+				              <li><%= link_to 'Log out', destroy_user_session_path, :method => :delete %></li>
 		            		</ul>
 	          			</li>
 	        		<% else %>
@@ -37,12 +49,15 @@
   		</div>
 	</nav>
 
+	
+
 	<div class="container">
 	  <% flash.each do |key, value| %>
 	    <div class="alert alert-<%= key %>">
 	      <%= value %>
 	    </div>
 	  <% end %>
+
 	</div>
 
 	<%= yield :top_content %>
@@ -50,6 +65,10 @@
 	<div class="container">
 	    <h1><%= yield :header %></h1>
 	  <%= yield %>
-</div>
+	  <div class="footer">
+	<p>&copy; 2016</p>
+  </div>
+	</div>
+
 </body>
 </html>

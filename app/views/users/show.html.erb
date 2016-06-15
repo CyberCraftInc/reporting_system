@@ -1,0 +1,22 @@
+<div class="panel panel-info">
+      <div class="panel-heading">Login:</div>
+      <div class="panel-body"><%= @user.login %></div>
+    
+      <div class="panel-heading">Email:</div>
+      <div class="panel-body"><%= @user.email %></div>
+   
+      <div class="panel-heading">Role:</div>
+      <div class="panel-body"><%= @user.role.name %></div>
+
+      <div class="panel-heading">Joined on:</div>
+      <div class="panel-body"><%= @joined_on %></div>
+
+      <div class="panel-heading">Last logged in on:</div>
+      <div class="panel-body"><%= @last_login %></div>
+
+      <div class="panel-heading">No. times logged in:</div>
+      <div class="panel-body"><%= @user.sign_in_count %></div>
+</div>
+ 
+<%= link_to 'Edit', edit_user_path(@user) %> |
+<%= link_to 'Back', users_path %>
