@@ -1,0 +1,16 @@
+<div class="panel panel-info">
+      <div class="panel-heading">Body:</div>
+      <div class="panel-body"><%= @message.body %></div>
+    
+      <div class="panel-heading">Category:</div>
+      <div class="panel-body"><%= @message.category %></div>
+   
+      <div class="panel-heading">User:</div>
+      <div class="panel-body"><%= @message.user.login %></div>
+</div>
+<div>
+    <% if can? :update, @message %>
+		<%= link_to 'Edit', edit_message_path(@message) %> |
+	<% end %>
+	<%= link_to 'Back', messages_path %>
+</div>

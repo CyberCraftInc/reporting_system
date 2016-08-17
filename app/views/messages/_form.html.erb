@@ -1,0 +1,37 @@
+<%= form_for(@message) do |f| %>
+  <% if @message.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@message.errors.count, "error") %> prohibited this message from being saved:</h2>
+
+      <ul>
+      <% @message.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :body %><br>
+    <%= f.text_field :body, class: 'form-control' %>
+  </div>
+  <div class="form-group">
+      <%= f.label :category %><br>
+      <%= f.select :category, options_for_select(["Public", "Private"]), {}, {class: "form-control"} %>
+  </div>
+  <div class="form-group">
+    <%= f.label "Message Type" %><br />
+    <%= f.collection_check_boxes :messagetype_ids, Messagetype.all, :id, :name do |b| %>
+      <div class="collection-check-box">
+        <%= b.check_box %>
+        <%= b.label %>
+      </div>
+      <% end %>
+  </div>
+
+  <br>
+  <div class="actions">
+    <%= f.submit 'Create', class: 'btn btn-primary' %>
+  </div>
+<% end %>
+<br>

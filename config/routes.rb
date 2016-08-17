@@ -1,4 +1,24 @@
 Rails.application.routes.draw do
+  resources :messagetypes
+  devise_for :users 
+ 
+  scope "/superadmin" do
+    resources :users
+  end
+
+  resources :messages
+
+  resources :roles
+
+  # authenticated :user do
+  #   root to: 'messages#index', as: :authenticated_root
+  # end
+
+  root to: 'welcome#index'
+  #get 'welcome/index'
+
+  
+  
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
